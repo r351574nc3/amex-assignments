@@ -2,6 +2,11 @@
 
 ## Usage
 
+To run, simple use:
+```
+/usr/java/jdk1.7.0_71/bin/java -jar assignment2/target/assignment2-1.0-SNAPSHOT.jar
+```
+
 ### Install Weka
 
 1. Download weka zip file from http://prdownloads.sourceforge.net/weka/weka-3-7-12.zip
