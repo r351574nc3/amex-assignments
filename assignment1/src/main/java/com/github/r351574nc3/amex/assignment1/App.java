@@ -31,6 +31,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.MissingArgumentException;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,11 +51,18 @@ public class App  {
     }
     
     public static void main(final String ... args) {
+        if (args.length < 1) {
+            printUsage();
+            System.exit(0);            
+        }
+        
         final Options options = new Options();
         options.addOption(OptionBuilder.withArgName("output")
-                          .isRequired(true)
                           .hasArg(true)
                           .withDescription("Path for CSV output").create("o"));
+        options.addOption(OptionBuilder.withArgName("input")
+                          .hasArg(true)
+                          .withDescription("Path for CSV input").create("i"));
 
         
         final CommandLineParser parser = new BasicParser();
@@ -63,6 +71,16 @@ public class App  {
             cmd = parser.parse(options, args);
         }
         catch (Exception e) {
+            System.out.println(e.getMessage());
+            printUsage();
+            System.exit(0);
+        }
+
+        if ((cmd.hasOption('o') && cmd.hasOption('i'))
+            || !(cmd.hasOption('o') || cmd.hasOption('i'))
+            || (cmd.hasOption('o') && cmd.getArgs().length < 1)) {
+            printUsage();
+            System.exit(0);
         }
 
         final String outputName = cmd.getOptionValue("o");
@@ -76,7 +94,7 @@ public class App  {
         RedisHandle handle = null;
         try {
             handle = redis.start(true);
-            generator.generate(new File(outputName), iterations); 
+            generator.generate(new File(outputName), iterations);            
         }
         catch (InterruptedException ie) {
             ie.printStackTrace();
@@ -84,11 +102,19 @@ public class App  {
         catch (IOException ioe) {
         }
         finally {            
-            try {
-                redis.stop(handle);
-            }
-            catch (InterruptedException ie) {
-            }
+            System.exit(0);
         }
+    }
+
+    public static void printUsage() {
+        System.out.println(new StringBuilder()
+                           .append("Usage:\n")
+                           .append("    App [-i <input CSV>] [-o <output CSV>] <number of records to generate>\n\n")
+                           .append("            -i <input CSV>  : Used when reading from a CSV. Provides input CSV path\n")
+                           .append("            -o <output CSV> : Used when writing to a CSV. Provides output CSV path\n")
+                           .append("            <number of records to generate> : Only required with -o.\n")
+                           .append("\n")
+                           .append("            Note: either -o or -i can be used, but not both at the same time.\n")
+                           .toString());
     }
 }

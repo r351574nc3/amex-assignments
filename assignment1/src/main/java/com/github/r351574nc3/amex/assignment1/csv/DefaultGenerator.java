@@ -49,7 +49,7 @@ public class DefaultGenerator implements Generator {
         try {
             for (final Iterator<TestData> data_iter = testContentService.generate(recordCount); data_iter.hasNext();) {
                 final TestData record = data_iter.next();
-                info("Printing record: %s", record.asList().get(0));
+                debug("Printing record: %s", record.asList().get(0));
                 printer.printRecord(record.asList());
             }
         }
