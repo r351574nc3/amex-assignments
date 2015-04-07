@@ -39,12 +39,44 @@ import java.io.IOException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.github.r351574nc3.amex.assignment1.csv.DefaultGenerator;
+import com.github.r351574nc3.amex.assignment1.csv.DefaultInterpreter;
 import com.github.r351574nc3.amex.assignment1.csv.Generator;
+import com.github.r351574nc3.amex.assignment1.csv.Interpreter;
 
 
 public class App  {
 
-    public App() {
+    /**
+     * Main body executed with the CLI option -i is used
+     *
+     * @param input {@link File} instance to be read
+     */
+    public void run(final File input) {
+        try {
+            final Interpreter interpreter = new DefaultInterpreter();
+            interpreter.interpret(input);
+        }
+        catch (IOException ioe) {
+            error("Error reading CSV Input: %s", ioe.getMessage());
+        }
+    }
+    
+    /**
+     * Main body executed with the CLI option -o is used
+     *
+     * @param output {@link File} instance of CSV to be generated
+     * @param count is the number of records to add to the file
+     */
+    public void run(final File output, final Integer count) {
+        final Injector injector = Guice.createInjector(new Assignment1Module());
+        final Generator generator = injector.getInstance(DefaultGenerator.class);
+
+        try {           
+            generator.generate(output, count);
+        }
+        catch (IOException ioe) {
+            error("Error generating CSV output: %s", ioe.getMessage());
+        }
     }
     
     public static void main(final String ... args) {
@@ -80,17 +112,14 @@ public class App  {
             System.exit(0);
         }
 
-        final String outputName = cmd.getOptionValue("o");
-
-        final Injector injector = Guice.createInjector(new Assignment1Module());        
-        final Generator generator = injector.getInstance(DefaultGenerator.class);
-        final int iterations = Integer.parseInt(args[args.length - 1]);
-
-        try {
-            generator.generate(new File(outputName), iterations);
+        if (cmd.hasOption('o') && cmd.getArgs().length > 0) {
+            final String outputName = cmd.getOptionValue("o"); 
+            final int iterations = Integer.parseInt(cmd.getArgs()[cmd.getArgs().length - 1]);
+            new App().run(new File(outputName), iterations);
         }
-        catch (IOException ioe) {
-            error("%s", ioe.getMessage());
+        else if (cmd.hasOption('i')) {
+            final String inputName = cmd.getOptionValue("i");
+            new App().run(new File(inputName));            
         }
         
         System.exit(0);

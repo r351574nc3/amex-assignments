@@ -28,6 +28,7 @@ import com.google.inject.name.Named;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Random;
 
 /**
  *
@@ -46,7 +47,7 @@ public class DefaultTestContentService implements TestContentService {
     public TestData generate() {
         final EmailNotificationTestData retval = getChooser().getTemplate().<EmailNotificationTestData>cast();
         retval.setName(getNameGenerator().<String>generate());
-        retval.setMemberSince(getDateGenerator().<Date>generate());
+        retval.setMemberSince(new Random().nextInt(2015));
         retval.setEmailAddress(getEmailAddressGenerator().<String>generate(retval.getName()));
         retval.setAnnualSpend(getAmountGenerator().<BigDecimal>generate());
         return retval;

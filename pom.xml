@@ -18,8 +18,6 @@
     <httpcomponents.version>4.4.1</httpcomponents.version>
     <junit.version>4.12</junit.version>
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-    <netty.version>4.0.12.Final</netty.version>
-    <spullara-redis.version>0.7</spullara-redis.version>
     <surefire.version>2.18.1</surefire.version>
     <weka.version>3.7.12</weka.version>
   </properties>
@@ -50,11 +48,6 @@
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>
         <version>${guice.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.spullara.redis</groupId>
-        <artifactId>netty4-server</artifactId>
-        <version>${spullara-redis.version}</version>
       </dependency>
       <dependency>
         <groupId>nl.ac.waikato.cs.ml</groupId>

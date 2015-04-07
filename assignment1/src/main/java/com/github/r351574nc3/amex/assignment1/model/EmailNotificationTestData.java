@@ -25,15 +25,14 @@ package com.github.r351574nc3.amex.assignment1.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 /**
  */
-public abstract class EmailNotificationTestData implements TestData {
+public class EmailNotificationTestData implements TestData {
     protected String name;
-    protected Date memberSince;
+    protected Integer memberSince;
     protected BigDecimal annualSpend;
     protected String emailAddress;
     protected String subject;
@@ -52,11 +51,11 @@ public abstract class EmailNotificationTestData implements TestData {
         return this.name;
     }
 
-    public void setMemberSince(final Date memberSince) {
+    public void setMemberSince(final Integer memberSince) {
         this.memberSince = memberSince;
     }
 
-    public Date getMemberSince() {
+    public Integer getMemberSince() {
         return this.memberSince;
     }
 

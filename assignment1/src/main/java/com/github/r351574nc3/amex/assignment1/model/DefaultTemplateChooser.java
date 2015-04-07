@@ -54,7 +54,7 @@ public class DefaultTemplateChooser implements TemplateChooser {
                                 setContent("<html><head><title>Special Offer</title></head><body>You have been preapproved for {PZN1}. Please contact us at {PZN2} by {PZN3}.</body></html>");
                                 getAdditionalFields().add(getOfferGenerator().<String>generate());
                                 getAdditionalFields().add(getPhoneNumberGenerator().<String>generate());
-                                // getAdditionalFields().add(getDateGenerator().<Date>generate());
+                                getAdditionalFields().add(getDateGenerator().<Date>generate().toString());
                             }};
                         }
                     });
@@ -77,7 +77,7 @@ public class DefaultTemplateChooser implements TemplateChooser {
                                 getAdditionalFields().add(getBreedGenerator().<String>generate());
                                 getAdditionalFields().add(getAnimalDescriptionGenerator().<String>generate());
                                 getAdditionalFields().add(getPhoneNumberGenerator().<String>generate());
-                                // getAdditionalFields().add(getDateGenerator().<Date>generate());
+                                getAdditionalFields().add(getDateGenerator().<Date>generate().toString());
                             }};
                         }
                     });
