@@ -40,9 +40,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.github.r351574nc3.amex.assignment1.csv.DefaultGenerator;
 import com.github.r351574nc3.amex.assignment1.csv.Generator;
-import com.github.r351574nc3.amex.assignment1.persistence.DefaultRedisRuntime;
-import com.github.r351574nc3.amex.assignment1.persistence.RedisHandle;
-import com.github.r351574nc3.amex.assignment1.persistence.RedisRuntime;
 
 
 public class App  {
@@ -87,23 +84,16 @@ public class App  {
 
         final Injector injector = Guice.createInjector(new Assignment1Module());        
         final Generator generator = injector.getInstance(DefaultGenerator.class);
-        final RedisRuntime redis  = injector.getInstance(DefaultRedisRuntime.class);
-
         final int iterations = Integer.parseInt(args[args.length - 1]);
 
-        RedisHandle handle = null;
         try {
-            handle = redis.start(true);
-            generator.generate(new File(outputName), iterations);            
-        }
-        catch (InterruptedException ie) {
-            ie.printStackTrace();
+            generator.generate(new File(outputName), iterations);
         }
         catch (IOException ioe) {
+            error("%s", ioe.getMessage());
         }
-        finally {            
-            System.exit(0);
-        }
+        
+        System.exit(0);
     }
 
     public static void printUsage() {

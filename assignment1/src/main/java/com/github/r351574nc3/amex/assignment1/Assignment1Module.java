@@ -44,8 +44,6 @@ import com.github.r351574nc3.amex.assignment1.model.DefaultTemplateChooser;
 import com.github.r351574nc3.amex.assignment1.model.TestContentGenerator;
 import com.github.r351574nc3.amex.assignment1.model.DefaultTestContentService;
 import com.github.r351574nc3.amex.assignment1.model.TestContentService;
-import com.github.r351574nc3.amex.assignment1.persistence.DefaultRedisRuntime;
-import com.github.r351574nc3.amex.assignment1.persistence.RedisRuntime;
 
 /**
  *
@@ -72,7 +70,5 @@ public class Assignment1Module extends AbstractModule {
         bind(TestContentService.class).to(DefaultTestContentService.class);
         
         bind(Generator.class).to(DefaultGenerator.class);
-        
-        bind(RedisRuntime.class).to(DefaultRedisRuntime.class);
     }
 }
