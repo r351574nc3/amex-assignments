@@ -15,6 +15,7 @@ mvn install
 
 This will create a jar file (see below):
 ```
+leo@localhost:~/p/h/amex-assignments git:master ❯❯❯ cd assignment1
 leo@localhost:~/p/h/a/assignment1 git:master ❯❯❯ ls target                                                       
 classes  dependency-maven-plugin-markers  maven-archiver  surefire-reports  test-classes  assignment1-1.0-SNAPSHOT.jar
 leo@localhost:~/p/h/a/assignment1 git:master ❯❯❯
