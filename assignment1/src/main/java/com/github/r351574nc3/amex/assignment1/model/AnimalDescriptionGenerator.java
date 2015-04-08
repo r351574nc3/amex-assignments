@@ -25,7 +25,9 @@ package com.github.r351574nc3.amex.assignment1.model;
 
 
 /**
+ * {@link TestContentGenerator} instance to be used when generating test data about the description of an animal.
  *
+ * @author Leo Przybylski
  */
 public class AnimalDescriptionGenerator implements TestContentGenerator {
 
@@ -33,7 +35,10 @@ public class AnimalDescriptionGenerator implements TestContentGenerator {
     }
 
     /**
+     * Simple description. Not very random.
      *
+     * @param args unused.
+     * @return a {@link String} instance used with {@link TestData}
      */
     public <T> T generate(final Object ... args) {
         return (T) "looks like it's covered in confetti.";

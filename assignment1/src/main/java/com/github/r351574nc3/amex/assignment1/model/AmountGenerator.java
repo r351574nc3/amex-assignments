@@ -30,7 +30,9 @@ import java.util.Random;
 import java.util.Date;
 
 /**
+ * Generates {@link BigDecimal} values for test data to be used as currency.
  *
+ * @author Leo Przybylski
  */
 public class AmountGenerator implements TestContentGenerator {
 
