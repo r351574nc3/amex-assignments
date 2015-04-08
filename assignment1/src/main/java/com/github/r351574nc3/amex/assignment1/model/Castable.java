@@ -24,6 +24,11 @@
 package com.github.r351574nc3.amex.assignment1.model;
 
 
+/**
+ * Convenience interface to help make casting less ugly and unreadable.
+ * 
+ * @author Leo Przybylski
+ */
 public interface Castable {
 
     /**

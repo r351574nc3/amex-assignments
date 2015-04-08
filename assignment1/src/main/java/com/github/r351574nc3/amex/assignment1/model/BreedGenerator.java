@@ -28,12 +28,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Generates breeds for cats/dogs to be used in test data
  *
+ * @author Leo Przybylski
  */
 public class BreedGenerator implements TestContentGenerator {
 
     protected List<String> breeds;
 
+    
     public BreedGenerator() {
         breeds = new ArrayList<String>() {{
                 add("Tabby cat");
@@ -43,7 +46,10 @@ public class BreedGenerator implements TestContentGenerator {
     }
 
     /**
+     * Randomly chooses a breed from a predetermined {@link Collection}
      *
+     * @param args unused
+     * @return a {@link String} instance selected from the available {@link Collection} using a pseudo random number generator
      */
     public <T> T generate(final Object ... args) {
         return (T) breeds.get(new Random().nextInt(breeds.size()));

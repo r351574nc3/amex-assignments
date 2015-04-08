@@ -31,7 +31,10 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- *
+ * Service assembled using Guice Dependency Injection with various {@link TestContentGenerator} instances used to generate
+ * test data.
+ * 
+ * @author Leo Przybylski
  */
 public class DefaultTestContentService implements TestContentService {
     protected TemplateChooser chooser;
@@ -43,7 +46,12 @@ public class DefaultTestContentService implements TestContentService {
     protected TestContentGenerator emailAddressGenerator;
 
     protected TestContentGenerator amountGenerator;
-    
+
+    /**
+     * Generates a single {@link EmailNotificationTestData} instance with random values and returns it.
+     *
+     * @return pseudo-randomly generated instance of {@link EmailNotificationTestData}
+     */
     public TestData generate() {
         final EmailNotificationTestData retval = getChooser().getTemplate().<EmailNotificationTestData>cast();
         retval.setName(getNameGenerator().<String>generate());
@@ -53,6 +61,14 @@ public class DefaultTestContentService implements TestContentService {
         return retval;
     }
 
+    /**
+     * Provides an iterator that can be used with streams and for loops to incrementally generate {@link TestData} instances
+     * until the appropriate amount has been reached.
+     *
+     * @param count {@link Integer} amount of records to iterate over. Once <code>count</code> iterations of {@link TestData} have been
+     * generated, the iterator will stop.
+     * @return {@link Iterator} instance for incrementally generating {@link TestData} instances through iterations.
+     */
     public Iterator<TestData> generate(final Integer count) {
         return new Iterator<TestData>() {
             int idx = 0;

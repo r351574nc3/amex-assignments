@@ -31,7 +31,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Implementation of {@link TemplateChooser} that helps use a method for selecting templates at almost random for test data
  *
+ * @author Leo Przybylski
  */
 public class DefaultTemplateChooser implements TemplateChooser {
 

@@ -27,7 +27,10 @@ import java.util.Random;
 import java.util.Date;
 
 /**
+ * Used to when test data requires a generated {@link Date}
+ * 
  *
+ * @author Leo Przybylski
  */
 public class DateGenerator implements TestContentGenerator {
 
