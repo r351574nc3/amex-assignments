@@ -24,6 +24,11 @@
 package com.github.r351574nc3.amex.assignment1.model;
 
 
+/**
+ * Generic interface for developing implementations for choosing templates
+ *
+ * @author Leo Przybylski
+ */
 public interface TemplateChooser extends Castable {
 
     /**

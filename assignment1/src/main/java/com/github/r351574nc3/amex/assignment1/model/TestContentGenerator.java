@@ -24,7 +24,9 @@
 package com.github.r351574nc3.amex.assignment1.model;
 
 /**
+ * Generic interface for creating new generators of different types of test data
  *
+ * @author Leo Przybylski
  */
 public interface TestContentGenerator {
     public <T> T generate(Object ... args);

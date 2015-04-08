@@ -26,11 +26,25 @@ package com.github.r351574nc3.amex.assignment1.model;
 import java.util.Iterator;
 
 /**
+ * Service interface used for creating test data records. Since there can be numerous different types of test data and
+ * different ways to populate and retrieve data, there is this interface to facilitate those different implementations.
  *
+ * @author Leo Przybylski
  */
 public interface TestContentService {
-    
+
+    /**
+     * Generates a single {@link TestData} record
+     * @return Test Data
+     */
     public TestData generate();
-    
+
+
+    /**
+     * Provides an {@link Iterator} for incrementally iterating over a set number of generated {@link TestData} records
+     *
+     * @param count set number of records
+     * @return {@link Iterator}
+     */
     public Iterator<TestData> generate(final Integer count);
 }

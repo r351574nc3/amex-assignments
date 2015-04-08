@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Generates a random human name to be used within {@link TestData}
  *
+ * @author Leo Przybylski
  */
 public class NameGenerator implements TestContentGenerator {
 
@@ -43,7 +45,10 @@ public class NameGenerator implements TestContentGenerator {
     }
 
     /**
+     * Uses a pseudo random number generator to select from a finite set of names and return it.
      *
+     * @param args unused
+     * @return a peudo-randomly selected name as a {@link String} instance
      */
     public <T> T generate(final Object ... args) {
         return (T) names.get(new Random().nextInt(names.size()));

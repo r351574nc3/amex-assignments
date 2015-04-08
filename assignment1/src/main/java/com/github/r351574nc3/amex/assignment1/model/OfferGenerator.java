@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Generates an offer to be used in an {@link EmailNotificationTestData} instance
  *
+ * @author Leo Przybylski
  */
 public class OfferGenerator implements TestContentGenerator {
 
@@ -43,7 +45,10 @@ public class OfferGenerator implements TestContentGenerator {
     }
 
     /**
+     * Uses a pseudo-random number generator to select an offer from a finite {@link Collection} of available offers.
      *
+     * @param args unused
+     * @return a pseudo-randomly selected offer as a {@link String} instance
      */
     public <T> T generate(final Object ... args) {
         return (T) offers.get(new Random().nextInt(offers.size()));

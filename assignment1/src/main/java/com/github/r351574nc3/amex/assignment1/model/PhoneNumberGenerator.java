@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Generates phone numbers to be used as {@link TestData}
  */
 public class PhoneNumberGenerator implements TestContentGenerator {
 
@@ -43,7 +43,10 @@ public class PhoneNumberGenerator implements TestContentGenerator {
     }
 
     /**
+     * Uses a pseudo-random number generator to select a number from a finite {@link Collection} of available phone numbers
      *
+     * @param args unused
+     * @return a pseudo-randomly selected number as a {@link String} instance
      */
     public <T> T generate(final Object ... args) {
         return (T) numbers.get(new Random().nextInt(numbers.size()));

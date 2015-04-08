@@ -27,7 +27,9 @@ import java.util.UUID;
 
 
 /**
+ * Generates password reset links to be used as {@link TestData}
  *
+ * @author Leo Przybylski
  */
 public class ResetLinkGenerator implements TestContentGenerator {
 
@@ -35,7 +37,10 @@ public class ResetLinkGenerator implements TestContentGenerator {
     }
 
     /**
+     * Assumes links all have the same basic prefix. A UUID is generated at random to represent the reset token.
      *
+     * @param args unused
+     * @return a {@link String} reset link with a random UUID
      */
     public <T> T generate(final Object ... args) {
         return (T) String.format("https://www.amex.com/reset_pw?token=%s", UUID.randomUUID());
