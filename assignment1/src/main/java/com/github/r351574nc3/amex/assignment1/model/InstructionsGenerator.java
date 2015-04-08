@@ -25,12 +25,17 @@ package com.github.r351574nc3.amex.assignment1.model;
 
 
 /**
+ * Generates instructions to be inserted in an {@link EmailNotificationTestData} as test data
  *
+ * @author Leo Przybylski
  */
 public class InstructionsGenerator implements TestContentGenerator {
 
     /**
+     * A simple instruction.
      *
+     * @param args unused
+     * @return a {@link String} instance containing a simple instruction.
      */
     public <T> T generate(final Object ... args) {
         return (T) "do the hokey pokey.";

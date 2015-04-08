@@ -33,14 +33,18 @@ import java.util.List;
  * any character including spaces and special characters like '@'. This makes it particularly difficult to validate email addresses
  * since just about anything is allowed.
  *
- *
+ * @author Leo Przybylski
  */
 public class EmailAddressGenerator implements TestContentGenerator {
     public EmailAddressGenerator() {
     }
 
     /**
+     * Generates email addresses based on the name of the associated record. 
      *
+     * @param args will contain a space delimited set of names that will be parsed and used to create the /name/ portion of the email address.
+     * @param {@link String} instance of the email address.
+     * @throws IllegalArgumentException when a name is not provided.
      */
     public <T> T generate(final Object ... args) {
         if (args.length > 0) {

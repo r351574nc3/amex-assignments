@@ -29,6 +29,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Base implementation model of {@link TestData}. There can be other kinds of {@link TestData}, but this is the only current
+ * variation.
+ *
+ * @author Leo Przybylski
  */
 public class EmailNotificationTestData implements TestData {
     protected String name;
