@@ -56,11 +56,9 @@ public class App  {
     
     protected Instances trained;
     protected Instances test;
-    protected ArffLoader loader;
     protected LinearRegression classifier;
     
     public App() {
-        loader = new ArffLoader();
     }
 
     public void setTest(final Instances instances) {
@@ -91,6 +89,7 @@ public class App  {
      * Loads the MPG data file from UCI
      *
      * @param {@link String} intances of path of the dataset
+     * @return {@link Instances} instance containing all records of the dataset.
      */
     public Instances load(final String mpgFile) throws Exception {
         try {           
@@ -108,18 +107,39 @@ public class App  {
 
     }
 
+    /**
+     * Trains the model using a {@link LinearRegression} classifier.
+     *
+     * @throws an Exception
+     */
     public void train() throws Exception {
         setClassifier(new LinearRegression());
         getClassifier().buildClassifier(getTrained());
     }
 
+    /**
+     * Tests/evaluates the trained model. This method assumes that {@link #train()} was previously called to assign a {@link LinearRegression} 
+     * classifier. If it wasn't, an exception will be thrown.
+     *
+     * @throws Exception if train wasn't called prior.
+     */
     public void test() throws Exception {
+        if (getClassifier() == null) {
+            throw new RuntimeException("Make sure train was run prior to this method call");
+        }
+        
         final Evaluation eval = new Evaluation(getTrained());
         eval.evaluateModel(getClassifier(), getTest());
         info("%s", eval.toSummaryString("Results\n\n", false));
-        // info("%s", eval.toClassDetailsString("Details\n\n"));
+        info("Percent of correctly classified instances: %s", eval.pctCorrect());
     }
 
+    /**
+     * Generates a predictive model based on a previously trained and evaluated model.
+     *
+     * @param inputName unlabeled model to load
+     * @param outputName path to the file where results will be stored.
+     */
     public void predict(final String inputName, final String outputName) throws Exception {
         final Instances input = load(inputName);
         final Instances labeled = new Instances(input);
