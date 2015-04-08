@@ -88,4 +88,23 @@ public class QuadraticFunctionFactoryTest {
         final QuadraticFunction quadratic = factory.newFunction("x^2 - 2x + 1 = 0");
         
     }
+
+    @Test
+    public void testNegativeSecondCoefficient2() {
+        final QuadraticFunctionFactory factory = new QuadraticFunctionFactory() {
+                    public QuadraticFunction newFunction(final String equation) {
+                        final double a = parseFirstCoefficient(equation.trim());
+                        assertEquals(2D, a, 0.1);
+                        final double b = parseSecondCoefficient(equation.trim());
+                        assertEquals(-3D, b, 0.1);
+                        final double c = parseConstant(equation.trim());
+                        assertEquals(-1D, c, 0.1);
+                        return new QuadraticFunction(a, b, c);
+                    }
+
+            };
+        
+        final QuadraticFunction quadratic = factory.newFunction("2x^2 - 3x - 1 = 0");
+        
+    }
 }

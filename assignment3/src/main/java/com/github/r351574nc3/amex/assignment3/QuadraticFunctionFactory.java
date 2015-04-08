@@ -67,9 +67,9 @@ public class QuadraticFunctionFactory {
     }
 
     protected Double parseConstant(final String equation) {
-        final Matcher matcher = Pattern.compile("([\\+\\-]?[0-9]*) = 0").matcher(equation);
+        final Matcher matcher = Pattern.compile("([\\+\\-]?[\\s]?[0-9]*) = 0").matcher(equation);
         if (matcher.find()) {
-            return Double.parseDouble(matcher.group(1));
+            return matcher.group(1).replaceAll(" ", "").length() > 0 ? Double.parseDouble(matcher.group(1).replaceAll(" ", "")) : 0D;
         }
         return 0D;
     }

@@ -1,5 +1,8 @@
 # Assignment 2
 
+## Description
+Use Weka ML library to train and test a dataset, then output a prediction.
+
 ## Usage
 ```
 Usage:

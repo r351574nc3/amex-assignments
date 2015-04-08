@@ -23,38 +23,40 @@
  */
 package com.github.r351574nc3.amex.assignment3;
 
-import static java.lang.Math.sqrt;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
-public class QuadraticFunction implements Function<Double[]> {
-    protected Double a;
-    protected Double b;
-    protected Double c;
-
-    public QuadraticFunction(final Double a, final Double b, final Double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
+/**
+ * Unit test for simple App.
+ */
+public class QuadraticFunctionTest {
     
-    public Double[] solve() {
-        final Double[] retval = new Double[2];
-
-        // Solve for -
-        retval[0] = solve(-1D);
-
-        // Solve for +
-        retval[1] = solve(1D);
-
-        return retval;
+    @Test
+    public void testStandardEquation() {
+        final Double[] results = new QuadraticFunction(1D, -2D, 1D).solve();
+        assertEquals(1, results[0], 0.1);
+        assertEquals(1, results[1], 0.1);
     }
 
-    /**
-     * Solves a quadratic function using the quadratic formula. Since quadratic equation is a parabola, there can be 2 solutions. A
-     * sign is used to deterimine which solution.
-     *
-     * @param sign {@link Double} instance either 1 or -1 that determines how to solve.
-     */
-    protected Double solve(final Double sign) {
-        return (((-1) * b) + (sign * sqrt((b*b) + (-4 * a * c)))) / (2 * a);
+    @Test
+    public void testNegativeFirstCoefficient() {
+        final Double[] results = new QuadraticFunction(-1D, 2D, -1D).solve();
+        assertEquals(1, results[0], 0.1);
+        assertEquals(1, results[1], 0.1);        
+    }
+
+    @Test
+    public void testNegativeSecondCoefficient() {
+        final Double[] results = new QuadraticFunction(1D, -4D, 4D).solve();
+        assertEquals(2, results[0], 0.1);
+        assertEquals(2, results[1], 0.1);        
+    }
+
+    @Test
+    public void testNegativeSecondCoefficient2() {
+        final Double[] results = new QuadraticFunction(2D, -3D, -1D).solve();
+        assertEquals(-0.28, results[0], 0.1);
+        assertEquals(1.78, results[1], 0.1);
     }
 }
