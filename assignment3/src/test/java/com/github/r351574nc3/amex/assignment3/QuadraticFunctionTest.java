@@ -28,7 +28,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit test to test the {@link QuadraticFunction#solve()} method.
  */
 public class QuadraticFunctionTest {
     

@@ -25,6 +25,11 @@ package com.github.r351574nc3.amex.assignment3;
 
 import static java.lang.Math.sqrt;
 
+/**
+ * Java class representation of an algebra Quadratic Function in standard form.
+ *
+ * @author Leo Przybylski
+ */
 public class QuadraticFunction implements Function<Double[]> {
     protected Double a;
     protected Double b;
@@ -36,6 +41,12 @@ public class QuadraticFunction implements Function<Double[]> {
         this.c = c;
     }
     
+    /**
+     * Solves a quadratic function using the quadratic formula. Since quadratic equation is a parabola, there can be 2 solutions. A
+     * sign is used to deterimine which solution.
+     *
+     * @return positive and negative solutions to the {@link QuadraticFunction}
+     */
     public Double[] solve() {
         final Double[] retval = new Double[2];
 
@@ -53,6 +64,7 @@ public class QuadraticFunction implements Function<Double[]> {
      * sign is used to deterimine which solution.
      *
      * @param sign {@link Double} instance either 1 or -1 that determines how to solve.
+     * @return positive and negative solutions to the {@link QuadraticFunction}
      */
     protected Double solve(final Double sign) {
         return (((-1) * b) + (sign * sqrt((b*b) + (-4 * a * c)))) / (2 * a);

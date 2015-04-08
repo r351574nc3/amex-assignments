@@ -48,6 +48,12 @@ public class QuadraticFunctionFactory {
         return factory;
     }
 
+    /**
+     * Handles parsing of the first coefficient of the quadratic equation
+     *
+     * @param equation the full quadratic equation as a {@link String}
+     * @return the {@link Double} precision value of the coefficient.
+     */
     protected Double parseFirstCoefficient(final String equation) {
         final Matcher matcher = Pattern.compile("([\\+\\-]?[0-9]*)x\\^2").matcher(equation);
         if (matcher.find()) {
@@ -56,6 +62,12 @@ public class QuadraticFunctionFactory {
         return 1D;
     }
 
+    /**
+     * Handles parsing of the second coefficient of the quadratic equation
+     *
+     * @param equation the full quadratic equation as a {@link String}
+     * @return the {@link Double} precision value of the coefficient.
+     */
     protected Double parseSecondCoefficient(final String equation) {
         final Matcher matcher = Pattern.compile("([\\+\\-]?[\\s]?[0-9]*)x[^\\^]").matcher(equation);
         if (matcher.find()) {
@@ -66,6 +78,12 @@ public class QuadraticFunctionFactory {
         return 1D;
     }
 
+    /**
+     * Handles parsing of the constant of the quadratic equation
+     *
+     * @param equation the full quadratic equation as a {@link String}
+     * @return the {@link Double} precision value of the constant.
+     */
     protected Double parseConstant(final String equation) {
         final Matcher matcher = Pattern.compile("([\\+\\-]?[\\s]?[0-9]*) = 0").matcher(equation);
         if (matcher.find()) {

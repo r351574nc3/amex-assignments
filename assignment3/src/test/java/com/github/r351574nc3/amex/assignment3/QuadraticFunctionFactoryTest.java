@@ -28,7 +28,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Tests parsing of quadratic functions in standard form..
  */
 public class QuadraticFunctionFactoryTest {
     
