@@ -1,10 +1,19 @@
 # Assignment 2
 
 ## Usage
-
-To run, simple use:
 ```
-/usr/java/jdk1.7.0_71/bin/java -jar assignment2/target/assignment2-1.0-SNAPSHOT.jar
+Usage:
+    com.github.r351574nc3.amex.assignment2.App -t <test data.arff> -i <input data.arff> -o <output arff> 
+
+            -t <test data.arff>   : Test data used for training and testing the model.
+            -i <input data.arff>  : Unlabeled dataset
+            -o <output data.arff> : Path where results will be output
+```
+
+## Examples
+To run, simply use:
+```
+java -jar assignment2/target/assignment2-1.0-SNAPSHOT.jar assignment2/src/main/resources/auto-mpg/auto-mpg.arff -t assignment2/src/main/resources/auto-mpg/auto-mpg.arff -i assignment2/src/main/resources/auto-mpg/auto-mpg.arff -o out.arf 
 ```
 
 ### Install Weka

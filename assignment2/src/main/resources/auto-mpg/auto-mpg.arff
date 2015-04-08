@@ -18,8 +18,7 @@
 @ATTRIBUTE acceleration   NUMERIC
 @ATTRIBUTE 'model-year'   NUMERIC
 @ATTRIBUTE origin         NUMERIC
-@ATTRIBUTE class          STRING
-
+@ATTRIBUTE car-name       STRING
 
 @DATA
 18.0,8,307.0,130.0,3504.,12.0,70,1,"chevrolet chevelle malibu"
